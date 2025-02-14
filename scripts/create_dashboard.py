@@ -54,7 +54,7 @@ def create_dashboard(root):
     plot_frame.grid(row=1, column=0, sticky=(tk.W, tk.E, tk.N, tk.S))
 
     # Dropdown for city selection
-    city_var = tk.StringVar(value='Sydney')
+    city_var = tk.StringVar(value='Beijing')
     city_dropdown = ttk.Combobox(control_frame, textvariable=city_var, values=['Sydney', 'New York', 'London', 'Beijing'])
     city_dropdown.grid(row=0, column=0, padx=5, pady=5)
 

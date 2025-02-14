@@ -2,3 +2,5 @@ requests
 pandas
 matplotlib
 ipywidgets
+pytest
+mypy
