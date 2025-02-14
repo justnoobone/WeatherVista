@@ -1,3 +1,4 @@
+import os
 import pandas as pd
 
 
@@ -37,8 +38,18 @@ def save_to_csv(data, filename):
     if data is None:
         print(f"No data to save for {filename}")
         return
+    # 构建上级目录中的 data 文件夹路径
+    target_folder = os.path.join(os.pardir, 'data','processed')
+    # 规范化路径，确保在不同操作系统上路径格式正确
+    target_folder = os.path.normpath(target_folder)
+    # 检查目标文件夹是否存在，如果不存在则创建
+    if not os.path.exists(target_folder):
+        os.makedirs(target_folder)
+    # 构建新的文件路径，将目标文件夹和原文件名组合
+    new_file_path = os.path.join(target_folder, filename)
     df = pd.DataFrame(data)
-    df.to_csv(filename, index=False)
+    # 使用新的文件路径保存数据到 CSV 文件
+    df.to_csv(new_file_path, index=False)
 
 
 def calculate_daily_stats(forecast_data):
